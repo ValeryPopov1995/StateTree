@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
@@ -11,7 +10,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _reloaded, _noAmmo;
 
-        public override async Task<NodePort> Execute(Npc agent)
+        public override async Task<StateResult<Npc>> Execute(Npc agent)
         {
             var weapon = agent.Inventory.TryGetItem<Weapon>();
             var newMagazine = agent.Inventory.Items
@@ -20,10 +19,10 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             if (newMagazine)
             {
                 await weapon.Reload(newMagazine);
-                return GetOutputPort(nameof(_reloaded));
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_reloaded)));
             }
 
-            return GetOutputPort(nameof(_noAmmo));
+            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noAmmo)));
         }
     }
 }

@@ -7,6 +7,8 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 {
     public class WorldLog : MonoBehaviour
     {
+        [SerializeField] private bool _worldLogging = true;
+        [SerializeField] private bool _debugLogging = true;
         [SerializeField] private TMP_Text _textPrefab;
         [SerializeField] private float _duration = 2;
         private static WorldLog _instance;
@@ -18,10 +20,15 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         public static async void Log(Vector3 point, string message, Component sender = null)
         {
-            if (sender == null)
-                Debug.Log(message);
-            else
-                Debug.Log($"{sender.name} : {message}");
+            if (_instance._debugLogging)
+            {
+                if (sender == null)
+                    Debug.Log(message);
+                else
+                    Debug.Log($"{sender.name} : {message}");
+            }
+
+            if (!_instance._worldLogging) return;
 
             var text = Instantiate(_instance._textPrefab, point + Vector3.up * 3, Quaternion.identity);
             text.transform.LookAt(Camera.main.transform);

@@ -12,7 +12,6 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [SerializeField] private Image _icon;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private float _delay = 2;
-        [SerializeField] private int _hearDistance = 9;
 
         public async void Say(Npc npc, CommunicationCommandData data)
         {
@@ -23,7 +22,9 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             _text.text = data.Text;
 
             await Task.Delay(TimeSpan.FromSeconds(_delay));
-            Destroy(gameObject);
+
+            if (!destroyCancellationToken.IsCancellationRequested)
+                Destroy(gameObject);
         }
     }
 }

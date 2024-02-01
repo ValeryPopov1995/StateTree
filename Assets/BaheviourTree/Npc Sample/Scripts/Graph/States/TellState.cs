@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
@@ -12,11 +11,11 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _next;
 
-        public override async Task<NodePort> Execute(Npc agent)
+        public override async Task<StateResult<Npc>> Execute(Npc agent)
         {
             await Task.Yield();
             agent.Communication.Tell(_command);
-            return GetOutputPort(nameof(_next));
+            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_next)));
         }
     }
 }

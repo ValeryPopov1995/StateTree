@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
@@ -10,21 +9,24 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [SerializeField, Min(0)] private int _dangerDistance = 9;
 
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
-        private NpcState _hasEnemy, _noEnemy;
+        private NpcState _noWarning, _hasEnemy, _noEnemy;
 
-        public override async Task<NodePort> Execute(Npc agent)
+        public override async Task<StateResult<Npc>> Execute(Npc agent)
         {
+            if (agent.TargetWarning.IsEmpty)
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noWarning)));
+
             agent.Mover.MoveTo(agent.TargetWarning);
             agent.Mover.LookAt(agent.TargetWarning);
 
             while (agent.Mover.IsMove)
             {
                 if (TryReactOnEnemy(agent, _dangerDistance))
-                    return GetOutputPort(nameof(_hasEnemy));
+                    return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_hasEnemy)));
                 await Task.Delay(100);
             }
 
-            return GetOutputPort(nameof(_noEnemy));
+            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noEnemy)));
         }
     }
 }

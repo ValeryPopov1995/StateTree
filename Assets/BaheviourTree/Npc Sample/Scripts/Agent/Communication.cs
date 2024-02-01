@@ -11,15 +11,15 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         EnemyDetected,
         Reloading,
         NeedHelp, // medic!
-        CoverMe
+        CoverMe,
+        ImHealthy
     }
 
     [Serializable]
-    public class Communication : IInitializable
+    public class Communication : IInitializable, IDisposable
     {
         public event Action<CommunicationCommandData> OnTell, OnHear;
 
-        public CommunicationCommandType LastHear;
         [SerializeField] private Speach _speachPrefab;
         [SerializeField] private CommunicationCommandDatas _tellDatas;
         [SerializeField] private CommunicationCommandDatas _hearDatas;
@@ -36,6 +36,8 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         public void Tell(CommunicationCommandType command)
         {
+            if (!Initialized) return;
+
             UnityEngine.Object.Instantiate(_speachPrefab).Say(_npc, _tellDatas.GetCommunicationData(command));
 
             var npcs = _npc.OverlapNpcs(_tellDistance);
@@ -47,8 +49,15 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         public void Hear(CommunicationCommandType command)
         {
+            if (!Initialized) return;
+
             UnityEngine.Object.Instantiate(_speachPrefab).Say(_npc, _hearDatas.GetCommunicationData(command));
             OnHear?.Invoke(_hearDatas.GetCommunicationData(command));
+        }
+
+        public void Dispose()
+        {
+            Initialized = false;
         }
     }
 }

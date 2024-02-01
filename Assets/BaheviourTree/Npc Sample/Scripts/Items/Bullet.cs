@@ -37,15 +37,13 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
             if (Application.isPlaying && !destroyCancellationToken.IsCancellationRequested)
                 Destroy(gameObject);
-            else
-                DestroyImmediate(gameObject);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             var npc = other.GetComponentInParent<Npc>();
             if (npc)
-                npc.Health.Damage(_data.Damage);
+                npc.Health.GetDamage(_data.Damage);
 
             Destroy(gameObject);
         }

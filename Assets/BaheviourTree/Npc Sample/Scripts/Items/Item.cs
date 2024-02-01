@@ -7,21 +7,29 @@ namespace ValeryPopov.Common.StateTree.NpcSample
     {
         public bool IsInInventory => AttachedInventory != null;
         public bool IsOnFloor => !IsInInventory;
+        public bool IsPickable { get; internal set; } = true;
         public Rigidbody Rigidbody { get; private set; }
-        public Inventory AttachedInventory { get; private set; }
+        public Inventory AttachedInventory { get; internal set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Rigidbody = GetComponent<Rigidbody>();
         }
 
         public void PickUpByInventory(Inventory inventory)
         {
-            if (AttachedInventory != null || inventory == null)
-                throw new System.Exception("no inventory to pick up or item was picked up");
+            if (inventory == null)
+                throw new System.Exception("no inventory to pick up");
 
-            AttachedInventory = inventory;
-            Rigidbody.isKinematic = true;
+            if (inventory == AttachedInventory)
+            {
+                Debug.LogWarning("same inventory to pick up");
+                return;
+            }
+
+            if (!IsPickable) return;
+
+            inventory.PickUp(this);
         }
 
         /// <summary>
@@ -29,12 +37,9 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         /// </summary>
         public void DropFromInventory()
         {
-            if (AttachedInventory == null)
-                throw new System.Exception("no inventory to drop");
+            if (!IsInInventory) return;
 
             AttachedInventory.Drop(this);
-            AttachedInventory = null;
-            Rigidbody.isKinematic = false;
         }
 
         public static Item TryFindOnFloor(Vector3 startPoint, float maxDistance, string itemType)

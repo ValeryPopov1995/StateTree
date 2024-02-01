@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree
 {
@@ -9,43 +8,38 @@ namespace ValeryPopov.Common.StateTree
 
     public abstract class Agent<TAgent> : Agent where TAgent : Agent
     {
+        public Interruption<TAgent> UnhandledInterrupt { get; internal set; }
+        public StartState<TAgent> StartState { get; private set; }
+        public StartInterruptState<TAgent> InterruptionState { get; private set; }
+
         [SerializeField] private StateGraph<TAgent> _graph;
-        private State<TAgent> _startState;
         private State<TAgent> _currentState;
-        private int _currentStateIndex;
+#if UNITY_EDITOR
+        private int _currentStateIndex; // for debug
+#endif
+
+
 
         protected virtual void Start()
         {
-            StartCircle();
+            ExecuteCircle();
         }
 
-        private async void StartCircle()
+        private async void ExecuteCircle()
         {
-            _startState = _graph.nodes.FirstOrDefault(node => node is StartState<TAgent>) as State<TAgent>;
-
-            if (_startState == null)
+            StartState = _graph.nodes.FirstOrDefault(node => node is StartState<TAgent>) as StartState<TAgent>;
+            if (StartState == null)
                 throw new System.NullReferenceException("no start state");
 
+            InterruptionState = _graph.nodes.FirstOrDefault(node => node is StartInterruptState<TAgent>) as StartInterruptState<TAgent>;
+            if (InterruptionState == null)
+                throw new System.NullReferenceException("no interruption state");
 
-            _currentState = _startState;
+            _currentState = StartState;
             while (!destroyCancellationToken.IsCancellationRequested)
             {
-                NodePort port = await ExecuteState(_currentState);
-
-                var customConnection = _currentState.GetCustomConnection();
-                if (customConnection != null)
-                {
-                    _currentState = customConnection.node as State<TAgent>;
-                    _currentStateIndex = _graph.nodes.IndexOf(_currentState);
-                    continue;
-                }
-
-                if (port.Connection == null)
-                    _currentState = _startState;
-                else
-                    _currentState = port.Connection.node as State<TAgent>;
-
-                _currentStateIndex = _graph.nodes.IndexOf(_currentState);
+                var result = await ExecuteState(_currentState);
+                _currentState = result.Complete(this);
             }
         }
 
@@ -53,6 +47,6 @@ namespace ValeryPopov.Common.StateTree
         /// Override to this <code>return await state.Execute(this);</code>
         /// </summary>
         /// <returns>Output port</returns>
-        protected abstract Task<NodePort> ExecuteState(State<TAgent> state);
+        protected abstract Task<StateResult<TAgent>> ExecuteState(State<TAgent> state);
     }
 }

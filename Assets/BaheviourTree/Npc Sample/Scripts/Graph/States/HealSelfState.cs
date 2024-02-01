@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using UnityEngine;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
@@ -13,15 +12,16 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _healed, _failed;
 
-        public override async Task<NodePort> Execute(Npc agent)
+        public override async Task<StateResult<Npc>> Execute(Npc agent)
         {
-            var medpack = GetFromAnywhere(agent);
+            var medpack = await GetFromAnywhere(agent) as Medpack; // TODO move to item
             if (medpack == null)
-                return GetOutputPort(nameof(_failed));
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_failed)));
 
             await Task.Delay(TimeSpan.FromSeconds(_healDuration));
-            (medpack as Medpack).Heal(agent);
-            return GetOutputPort(nameof(_healed));
+            medpack.Heal(agent);
+            agent.Communication.Tell(CommunicationCommandType.ImHealthy);
+            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_healed)));
         }
     }
 }

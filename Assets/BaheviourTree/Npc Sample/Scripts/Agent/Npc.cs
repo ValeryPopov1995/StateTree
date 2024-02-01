@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
-    public class Npc : Agent<Npc>
+    public class Npc : Agent<Npc>, IDamagable, IHealable
     {
         public Transform Transform => transform;
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
@@ -15,8 +14,27 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField] public TeamTag TeamTag { get; private set; }
         [field: SerializeField] public Communication Communication { get; private set; }
         [field: SerializeField] public Mover Mover { get; private set; }
-        public Npc TargetEnemy { get; set; }
-        public Target TargetWarning { get; set; }
+        [field: SerializeField] public Transform GranadeThrowPoint { get; private set; }
+
+        public Npc TargetEnemy
+        {
+            get
+            {
+                if (_targetEnemy && _targetEnemy.Health.IsAlive)
+                    return _targetEnemy;
+                else
+                    return _targetEnemy = null;
+            }
+            set
+            {
+                if (value != null && value.Health.IsAlive)
+                    _targetEnemy = value;
+                else
+                    _targetEnemy = null;
+            }
+        }
+        private Npc _targetEnemy;
+        public Target TargetWarning { get; set; } = new EmptyTarget();
         public Vector3 StartPosition { get; set; }
 
 
@@ -40,34 +58,36 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         private void Die()
         {
-            Destroy(gameObject);
+            Inventory.Dispose();
+            Rigidbody.isKinematic = false;
+            Communication.Dispose();
+            Mover.Dispose();
+
+            Rigidbody.AddTorque(Random.onUnitSphere * 10); // falling
         }
 
-        protected override async Task<NodePort> ExecuteState(State<Npc> state)
+        protected override async Task<StateResult<Npc>> ExecuteState(State<Npc> state)
         {
-            await Task.Yield(); // NOTEBENE good practice, can help avoid infinite loop and find error
             return await state.Execute(this);
         }
 
-        public IEnumerable<Npc> OverlapNpcs(int distance)
+        public IEnumerable<Npc> OverlapNpcs(int distance, bool includeDeads = false)
         {
             return FindObjectsByType<Npc>(FindObjectsSortMode.None)
-                .Where(charcter => this != charcter &&
-                Vector3.Distance(transform.position, charcter.transform.position) < distance);
+                .Where(npc =>
+                this != npc
+                && (includeDeads || !includeDeads && npc.Health.IsAlive)
+                && Vector3.Distance(transform.position, npc.transform.position) < distance);
         }
 
-        internal Cover FindCover()
+        public void GetDamage(int damage)
         {
-            var covers = Physics.OverlapSphere(transform.position, 15)
-                .Select(collider => collider.GetComponentInParent<Cover>())
-                .Where(cover => cover)
-                .OrderBy(cover => Vector3.Distance(transform.position, cover.transform.position))
-                .Distinct();
+            Health.GetDamage(damage);
+        }
 
-            if (covers.Count() > 1)
-                return covers.ElementAt(1);
-
-            return covers.LastOrDefault();
+        public void GetHeal(int heal)
+        {
+            Health.GetHeal(heal);
         }
     }
 }

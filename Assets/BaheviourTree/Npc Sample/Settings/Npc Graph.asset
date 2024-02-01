@@ -1,5 +1,129 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8773918474790743571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a0351c418eda945b5aaffbaf6a7b7b, type: 3}
+  m_Name: Patrol State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3880, y: -456}
+  ports:
+    keys:
+    - _hasEnemy
+    - _hasWarning
+    - _noWarning
+    - _input
+    values:
+    - _fieldName: _hasEnemy
+      _node: {fileID: -8773918474790743571}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _hasWarning
+      _node: {fileID: -8773918474790743571}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _noWarning
+      _node: {fileID: -8773918474790743571}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _input
+      _node: {fileID: -8773918474790743571}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _states
+        node: {fileID: -1238448995731882414}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _input: {fileID: 0}
+  _warningDistance: 9
+  _dangerDistance: 7
+  _wait: {x: 1, y: 2}
+  _hasEnemy: {fileID: 0}
+  _hasWarning: {fileID: 0}
+  _noWarning: {fileID: 0}
+--- !u!114 &-8528262821175145648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd02bba7d973f1e4b9c8aa7881ef8576, type: 3}
+  m_Name: Cover State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3880, y: -248}
+  ports:
+    keys:
+    - _covered
+    - _noCover
+    - _input
+    values:
+    - _fieldName: _covered
+      _node: {fileID: -8528262821175145648}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _noCover
+      _node: {fileID: -8528262821175145648}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _input
+      _node: {fileID: -8528262821175145648}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _states
+        node: {fileID: -1238448995731882414}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _input: {fileID: 0}
+  _maxMoveDuration: 5
+  _busyCoverDistance: 2
+  _coverType: 2
+  _findCoverZoneType: 1
+  _covered: {fileID: 0}
+  _noCover: {fileID: 0}
 --- !u!114 &-8028816530337767634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,7 +137,7 @@ MonoBehaviour:
   m_Name: Heal Self State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 888, y: 552}
+  position: {x: 456, y: 600}
   ports:
     keys:
     - _healed
@@ -33,7 +157,10 @@ MonoBehaviour:
       _node: {fileID: -8028816530337767634}
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _input
+        node: {fileID: 2742055169557373106}
+        reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 2
@@ -62,6 +189,54 @@ MonoBehaviour:
   _healDuration: 2.5
   _healed: {fileID: 0}
   _failed: {fileID: 0}
+--- !u!114 &-8009197639264874836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8427640d6941742b456e00fc9a1006, type: 3}
+  m_Name: Random State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2616, y: -1032}
+  ports:
+    keys:
+    - _states
+    - _input
+    values:
+    - _fieldName: _states
+      _node: {fileID: -8009197639264874836}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: -7347062918769258651}
+        reroutePoints: []
+      - fieldName: _input
+        node: {fileID: -6206657821726459730}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _input
+      _node: {fileID: -8009197639264874836}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _noAmmo
+        node: {fileID: 6854437516272389511}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _input: {fileID: 0}
+  _states: {fileID: 0}
 --- !u!114 &-7913395138668884595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +278,52 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _input: {fileID: 0}
+--- !u!114 &-7347062918769258651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe9f8375b0e9454fbdf59144f2a67b8, type: 3}
+  m_Name: Tell State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2840, y: -1112}
+  ports:
+    keys:
+    - _next
+    - _input
+    values:
+    - _fieldName: _next
+      _node: {fileID: -7347062918769258651}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: -6206657821726459730}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _input
+      _node: {fileID: -7347062918769258651}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _states
+        node: {fileID: -8009197639264874836}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _input: {fileID: 0}
+  _command: 5
+  _next: {fileID: 0}
 --- !u!114 &-6344550027652749149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +337,7 @@ MonoBehaviour:
   m_Name: Random State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1624, y: -488}
+  position: {x: 1544, y: -472}
   ports:
     keys:
     - _states
@@ -128,16 +349,16 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _input
-        node: {fileID: 4662304104052030743}
-        reroutePoints: []
-      - fieldName: _input
         node: {fileID: 2221294361669413471}
         reroutePoints: []
       - fieldName: _input
-        node: {fileID: -2376690438725374030}
+        node: {fileID: 6499025542315362147}
         reroutePoints: []
       - fieldName: _input
-        node: {fileID: 6499025542315362147}
+        node: {fileID: 5198955143817986756}
+        reroutePoints: []
+      - fieldName: _input
+        node: {fileID: 6854437516272389511}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -157,12 +378,114 @@ MonoBehaviour:
       - fieldName: _hasEnemy
         node: {fileID: 7009728149920391032}
         reroutePoints: []
+      - fieldName: _thown
+        node: {fileID: 5198955143817986756}
+        reroutePoints: []
+      - fieldName: _noGranade
+        node: {fileID: 5198955143817986756}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   _input: {fileID: 0}
   _states: {fileID: 0}
+--- !u!114 &-6206657821726459730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272fc9abf1c53de4db14a5a4811342a8, type: 3}
+  m_Name: Get Ammo State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3064, y: -1032}
+  ports:
+    keys:
+    - _collected
+    - _noAmmo
+    - _input
+    values:
+    - _fieldName: _collected
+      _node: {fileID: -6206657821726459730}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: 4662304104052030743}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _noAmmo
+      _node: {fileID: -6206657821726459730}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _input
+      _node: {fileID: -6206657821726459730}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _states
+        node: {fileID: -8009197639264874836}
+        reroutePoints: []
+      - fieldName: _next
+        node: {fileID: -7347062918769258651}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _input: {fileID: 0}
+  _item: ValeryPopov.Common.StateTree.NpcSample.Magazine, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  _fromInventory: 1
+  _fromTeammate: 1
+  _fromFloor: 1
+  _collected: {fileID: 0}
+  _noAmmo: {fileID: 0}
+--- !u!114 &-5979495319485500962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dac6b1b441b4b94fa8847261408fe75, type: 3}
+  m_Name: Npc Interrupt State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -520, y: 328}
+  ports:
+    keys:
+    - _firstState
+    values:
+    - _fieldName: _firstState
+      _node: {fileID: -5979495319485500962}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.State`1[[ValeryPopov.Common.StateTree.NpcSample.Npc,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: -5118404831465330640}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _firstState: {fileID: 0}
 --- !u!114 &-5118404831465330640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +499,7 @@ MonoBehaviour:
   m_Name: Is Health Low State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 104, y: 232}
+  position: {x: -200, y: 216}
   ports:
     keys:
     - _low
@@ -199,7 +522,10 @@ MonoBehaviour:
       _node: {fileID: -5118404831465330640}
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _input
+        node: {fileID: 2742055169557373106}
+        reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 2
@@ -212,12 +538,15 @@ MonoBehaviour:
       - fieldName: _firstState
         node: {fileID: 2277378627391265540}
         reroutePoints: []
+      - fieldName: _firstState
+        node: {fileID: -5979495319485500962}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   _input: {fileID: 0}
-  lowHealth: 50
+  lowHealthPercent: 50
   _low: {fileID: 0}
   _sufficient: {fileID: 0}
 --- !u!114 &-4972170225809317092
@@ -275,7 +604,7 @@ MonoBehaviour:
   _dangerDistance: 7
   _complete: {fileID: 0}
   _hasEnemy: {fileID: 0}
---- !u!114 &-2376690438725374030
+--- !u!114 &-1238448995731882414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,43 +613,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe9f8375b0e9454fbdf59144f2a67b8, type: 3}
-  m_Name: Tell State
+  m_Script: {fileID: 11500000, guid: 1f8427640d6941742b456e00fc9a1006, type: 3}
+  m_Name: Random State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1864, y: -408}
+  position: {x: 3576, y: -456}
   ports:
     keys:
-    - _next
+    - _states
     - _input
     values:
-    - _fieldName: _next
-      _node: {fileID: -2376690438725374030}
+    - _fieldName: _states
+      _node: {fileID: -1238448995731882414}
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _input
-        node: {fileID: 4662304104052030743}
+        node: {fileID: -8773918474790743571}
+        reroutePoints: []
+      - fieldName: _input
+        node: {fileID: -8528262821175145648}
         reroutePoints: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 2
       _dynamic: 0
     - _fieldName: _input
-      _node: {fileID: -2376690438725374030}
+      _node: {fileID: -1238448995731882414}
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: _states
-        node: {fileID: -6344550027652749149}
+      - fieldName: _noTarget
+        node: {fileID: 4662304104052030743}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   _input: {fileID: 0}
-  _command: 5
-  _next: {fileID: 0}
+  _states: {fileID: 0}
 --- !u!114 &-492590914923073586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +665,7 @@ MonoBehaviour:
   m_Name: Tell State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 632, y: 456}
+  position: {x: 200, y: 504}
   ports:
     keys:
     - _next
@@ -393,7 +724,6 @@ MonoBehaviour:
   - {fileID: 1893258851784218818}
   - {fileID: 6484506122386717242}
   - {fileID: 2221294361669413471}
-  - {fileID: -2376690438725374030}
   - {fileID: 8817863486860588428}
   - {fileID: -5118404831465330640}
   - {fileID: 3031781559444416874}
@@ -406,6 +736,15 @@ MonoBehaviour:
   - {fileID: -7913395138668884595}
   - {fileID: 6499025542315362147}
   - {fileID: 1195501251760881606}
+  - {fileID: -5979495319485500962}
+  - {fileID: -1238448995731882414}
+  - {fileID: -8773918474790743571}
+  - {fileID: -8528262821175145648}
+  - {fileID: 5198955143817986756}
+  - {fileID: -6206657821726459730}
+  - {fileID: 6854437516272389511}
+  - {fileID: -8009197639264874836}
+  - {fileID: -7347062918769258651}
 --- !u!114 &499638521321504587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,7 +930,7 @@ MonoBehaviour:
   m_Name: Random State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2376, y: -328}
+  position: {x: 3624, y: -696}
   ports:
     keys:
     - _states
@@ -620,7 +959,7 @@ MonoBehaviour:
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: _noAmmo
+      - fieldName: _noAmmoInWeapon
         node: {fileID: 4662304104052030743}
         reroutePoints: []
       _direction: 0
@@ -642,7 +981,7 @@ MonoBehaviour:
   m_Name: Cover State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2616, y: -520}
+  position: {x: 3848, y: -1032}
   ports:
     keys:
     - _covered
@@ -680,6 +1019,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _input: {fileID: 0}
+  _maxMoveDuration: 5
+  _busyCoverDistance: 2
+  _coverType: 2
+  _findCoverZoneType: 1
   _covered: {fileID: 0}
   _noCover: {fileID: 0}
 --- !u!114 &1767636213495904242
@@ -738,7 +1081,7 @@ MonoBehaviour:
   m_Name: Cover State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2616, y: -408}
+  position: {x: 3848, y: -840}
   ports:
     keys:
     - _covered
@@ -782,6 +1125,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _input: {fileID: 0}
+  _maxMoveDuration: 5
+  _busyCoverDistance: 2
+  _coverType: 2
+  _findCoverZoneType: 1
   _covered: {fileID: 0}
   _noCover: {fileID: 0}
 --- !u!114 &2221294361669413471
@@ -797,7 +1144,7 @@ MonoBehaviour:
   m_Name: Cover State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1864, y: -536}
+  position: {x: 2040, y: -1016}
   ports:
     keys:
     - _covered
@@ -808,10 +1155,7 @@ MonoBehaviour:
       _node: {fileID: 2221294361669413471}
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: _input
-        node: {fileID: 4662304104052030743}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 2
@@ -833,11 +1177,18 @@ MonoBehaviour:
       - fieldName: _states
         node: {fileID: -6344550027652749149}
         reroutePoints: []
+      - fieldName: _notDistanced
+        node: {fileID: 5198955143817986756}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   _input: {fileID: 0}
+  _maxMoveDuration: 5
+  _busyCoverDistance: 2
+  _coverType: 2
+  _findCoverZoneType: 1
   _covered: {fileID: 0}
   _noCover: {fileID: 0}
 --- !u!114 &2277378627391265540
@@ -853,7 +1204,7 @@ MonoBehaviour:
   m_Name: Npc Start State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -223, y: -85}
+  position: {x: -520, y: 232}
   ports:
     keys:
     - _firstState
@@ -864,9 +1215,6 @@ MonoBehaviour:
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: _input
-        node: {fileID: 2742055169557373106}
-        reroutePoints: []
       - fieldName: _input
         node: {fileID: -5118404831465330640}
         reroutePoints: []
@@ -924,8 +1272,11 @@ MonoBehaviour:
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: _firstState
-        node: {fileID: 2277378627391265540}
+      - fieldName: _sufficient
+        node: {fileID: -5118404831465330640}
+        reroutePoints: []
+      - fieldName: _failed
+        node: {fileID: -8028816530337767634}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -947,7 +1298,7 @@ MonoBehaviour:
   m_Name: Random State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 376, y: 520}
+  position: {x: -56, y: 568}
   ports:
     keys:
     - _states
@@ -1132,11 +1483,11 @@ MonoBehaviour:
   m_Name: Fire State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2104, y: -456}
+  position: {x: 3336, y: -856}
   ports:
     keys:
     - _afterFire
-    - _noAmmo
+    - _noAmmoInWeapon
     - _input
     - _noTarget
     values:
@@ -1152,7 +1503,7 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 2
       _dynamic: 0
-    - _fieldName: _noAmmo
+    - _fieldName: _noAmmoInWeapon
       _node: {fileID: 4662304104052030743}
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -1169,17 +1520,11 @@ MonoBehaviour:
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: _states
-        node: {fileID: -6344550027652749149}
+      - fieldName: _hasAmmo
+        node: {fileID: 6854437516272389511}
         reroutePoints: []
-      - fieldName: _covered
-        node: {fileID: 2221294361669413471}
-        reroutePoints: []
-      - fieldName: _next
-        node: {fileID: -2376690438725374030}
-        reroutePoints: []
-      - fieldName: _next
-        node: {fileID: 6499025542315362147}
+      - fieldName: _collected
+        node: {fileID: -6206657821726459730}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1189,7 +1534,10 @@ MonoBehaviour:
       _node: {fileID: 4662304104052030743}
       _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _input
+        node: {fileID: -1238448995731882414}
+        reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 2
@@ -1197,8 +1545,89 @@ MonoBehaviour:
   _input: {fileID: 0}
   _fireCount: {x: 3, y: 5}
   _afterFire: {fileID: 0}
-  _noAmmo: {fileID: 0}
+  _noAmmoInWeapon: {fileID: 0}
   _noTarget: {fileID: 0}
+--- !u!114 &5198955143817986756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b56b08801d744449b4e1b1000c026b4, type: 3}
+  m_Name: Throw Granade State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1512, y: -936}
+  ports:
+    keys:
+    - _thown
+    - _noGranade
+    - _input
+    - _notDistanced
+    values:
+    - _fieldName: _thown
+      _node: {fileID: 5198955143817986756}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: -6344550027652749149}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _noGranade
+      _node: {fileID: 5198955143817986756}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: -6344550027652749149}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _input
+      _node: {fileID: 5198955143817986756}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _states
+        node: {fileID: -6344550027652749149}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _notDistanced
+      _node: {fileID: 5198955143817986756}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: 2221294361669413471}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+  _input: {fileID: 0}
+  _item: ValeryPopov.Common.StateTree.NpcSample.Granade, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  _fromInventory: 1
+  _fromTeammate: 1
+  _fromFloor: 1
+  _force: 1
+  _minDistance: 5
+  _throwDuration: 1
+  _thown: {fileID: 0}
+  _noGranade: {fileID: 0}
+  _notDistanced: {fileID: 0}
 --- !u!114 &6484506122386717242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,7 +1641,7 @@ MonoBehaviour:
   m_Name: Reload State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2856, y: -328}
+  position: {x: 4088, y: -680}
   ports:
     keys:
     - _reloaded
@@ -1303,7 +1732,7 @@ MonoBehaviour:
   m_Name: Tell State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1864, y: -296}
+  position: {x: 2040, y: -824}
   ports:
     keys:
     - _next
@@ -1315,7 +1744,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _input
-        node: {fileID: 4662304104052030743}
+        node: {fileID: 6854437516272389511}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -1336,6 +1765,68 @@ MonoBehaviour:
   _input: {fileID: 0}
   _command: 2
   _next: {fileID: 0}
+--- !u!114 &6854437516272389511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdc746f46f9e0247a4f265a31fc4434, type: 3}
+  m_Name: Is Has Ammo State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2392, y: -776}
+  ports:
+    keys:
+    - _hasAmmo
+    - _noAmmo
+    - _input
+    values:
+    - _fieldName: _hasAmmo
+      _node: {fileID: 6854437516272389511}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: 4662304104052030743}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _noAmmo
+      _node: {fileID: 6854437516272389511}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _input
+        node: {fileID: -8009197639264874836}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: _input
+      _node: {fileID: 6854437516272389511}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: _states
+        node: {fileID: -6344550027652749149}
+        reroutePoints: []
+      - fieldName: _next
+        node: {fileID: 6499025542315362147}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _input: {fileID: 0}
+  _hasAmmo: {fileID: 0}
+  _noAmmo: {fileID: 0}
 --- !u!114 &7009728149920391032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,6 +1846,7 @@ MonoBehaviour:
     - _hasEnemy
     - _noEnemy
     - _input
+    - _noWarning
     values:
     - _fieldName: _hasEnemy
       _node: {fileID: 7009728149920391032}
@@ -1395,8 +1887,18 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: _noWarning
+      _node: {fileID: 7009728149920391032}
+      _typeQualifiedName: ValeryPopov.Common.StateTree.NpcSample.NpcState, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
   _input: {fileID: 0}
   _dangerDistance: 9
+  _noWarning: {fileID: 0}
   _hasEnemy: {fileID: 0}
   _noEnemy: {fileID: 0}
 --- !u!114 &8817863486860588428
@@ -1412,7 +1914,7 @@ MonoBehaviour:
   m_Name: Tell State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2616, y: -248}
+  position: {x: 3848, y: -600}
   ports:
     keys:
     - _next

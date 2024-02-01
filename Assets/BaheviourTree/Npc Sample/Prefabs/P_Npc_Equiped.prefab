@@ -57,6 +57,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6159813465096693861, guid: 22365ef20d0ba774e89910b1bb2bc6ee, type: 3}
+      propertyPath: _inventory.Items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159813465096693861, guid: 22365ef20d0ba774e89910b1bb2bc6ee, type: 3}
+      propertyPath: '_inventory.Items.Array.data[0]'
+      value: 
+      objectReference: {fileID: 274954915105580130}
+    - target: {fileID: 6159813465096693861, guid: 22365ef20d0ba774e89910b1bb2bc6ee, type: 3}
       propertyPath: <ConnectedMagazine>k__BackingField
       value: 
       objectReference: {fileID: 274954915105580130}
@@ -480,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: <Inventory>k__BackingField.Items.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: '<Inventory>k__BackingField.Items.Array.data[0]'
@@ -489,23 +497,23 @@ PrefabInstance:
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: '<Inventory>k__BackingField.Items.Array.data[1]'
       value: 
-      objectReference: {fileID: 274954915105580130}
+      objectReference: {fileID: 3925121840485310566}
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: '<Inventory>k__BackingField.Items.Array.data[2]'
       value: 
-      objectReference: {fileID: 3925121840485310566}
+      objectReference: {fileID: 4154523309884511923}
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: '<Inventory>k__BackingField.Items.Array.data[3]'
       value: 
-      objectReference: {fileID: 4154523309884511923}
+      objectReference: {fileID: 6562028046171036822}
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: '<Inventory>k__BackingField.Items.Array.data[4]'
       value: 
-      objectReference: {fileID: 6562028046171036822}
+      objectReference: {fileID: 6562028046672030657}
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: '<Inventory>k__BackingField.Items.Array.data[5]'
       value: 
-      objectReference: {fileID: 6562028046672030657}
+      objectReference: {fileID: 6562028045808022400}
     - target: {fileID: 6857947314600372963, guid: b774fe4af06d0094ca4494fa629159bb, type: 3}
       propertyPath: '<Inventory>k__BackingField.Items.Array.data[6]'
       value: 

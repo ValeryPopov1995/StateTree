@@ -8,7 +8,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         public void Heal(Npc npc)
         {
-            npc.Health.Heal(_healPoints);
+            npc.Health.GetHeal(_healPoints);
             DropFromInventory();
             Destroy(gameObject);
         }

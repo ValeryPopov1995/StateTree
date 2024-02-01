@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
     [Serializable]
-    public class Inventory : IInitializable
+    public class Inventory : IInitializable, IDisposable
     {
         [SerializeField] private Transform _inventoryParent; // TODO use it only for Init()
         public List<Item> Items = new();
@@ -26,14 +26,20 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         public void PickUp(Item item)
         {
             if (Items.Contains(item)) return;
+            if (!item.IsPickable) return;
             Items.Add(item);
             PickUpInternal(item);
         }
 
         private void PickUpInternal(Item item)
         {
+            if (item.IsInInventory)
+                item.AttachedInventory.Drop(item);
+
             item.PickUpByInventory(this);
             item.transform.SetParent(_inventoryParent);
+            item.AttachedInventory = this;
+            item.Rigidbody.isKinematic = true;
         }
 
         /// <summary>
@@ -43,9 +49,10 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         {
             if (!Items.Contains(item)) return;
 
-            Items.Remove(item); // important order
-            item.DropFromInventory();
+            Items.Remove(item);
             item.transform.SetParent(null);
+            item.AttachedInventory = null;
+            item.Rigidbody.isKinematic = false;
         }
 
         internal TItem TryGetItem<TItem>() where TItem : Item
@@ -56,6 +63,12 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         internal Item TryGetItem(string itemType)
         {
             return Items.FirstOrDefault(item => item.GetType().AssemblyQualifiedName == itemType);
+        }
+
+        public void Dispose()
+        {
+            while (Items.Count > 0)
+                Drop(Items[0]);
         }
     }
 }

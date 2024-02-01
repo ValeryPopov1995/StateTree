@@ -8,24 +8,26 @@ using UnityEngine.AI;
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
     [Serializable]
-    public class Mover : IInitializable
+    public class Mover : IInitializable, IDisposable
     {
         public bool IsStopped => Vector3.Distance(_navAgent.transform.position, _navAgent.destination) <= _navAgent.stoppingDistance;
         public bool IsMove => !IsStopped;
-        public Target LookTarget { get; private set; }
-        public Target MoveTarget { get; private set; }
+        public Target LookTarget { get; private set; } = new EmptyTarget();
+        public Target MoveTarget { get; private set; } = new EmptyTarget();
         public bool Initialized { get; private set; }
 
         [SerializeField] private NavMeshAgent _navAgent;
         [SerializeField, Min(1)] private int _rotationSpeed = 9;
-        private CancellationToken _token;
+        private CancellationToken _npcToken;
+        private CancellationTokenSource _disposeToken;
 
 
 
         public void Init(CancellationToken token)
         {
-            _token = token;
-            _navAgent.updateRotation = false;
+            _npcToken = token;
+            _disposeToken = new CancellationTokenSource();
+            _navAgent.enabled = true;
 
             if (_navAgent.stoppingDistance < 1)
             {
@@ -51,9 +53,9 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         private async void LookCircle()
         {
-            while (!_token.IsCancellationRequested)
+            while (!_npcToken.IsCancellationRequested && !_disposeToken.IsCancellationRequested)
             {
-                if (LookTarget != null)
+                if (!LookTarget.IsEmpty)
                 {
                     if (_navAgent.updateRotation)
                         _navAgent.updateRotation = false;
@@ -73,13 +75,21 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         private async void MoveCircle()
         {
-            while (!_token.IsCancellationRequested)
+            while (!_npcToken.IsCancellationRequested && !_disposeToken.IsCancellationRequested)
             {
-                if (MoveTarget != null && _navAgent.destination != MoveTarget)
+                if (!MoveTarget.IsEmpty && _navAgent.destination != MoveTarget)
                     _navAgent.destination = MoveTarget;
 
                 await Task.Delay(100);
             }
+        }
+
+        public void Dispose()
+        {
+            _disposeToken.Cancel();
+            LookTarget = MoveTarget = new EmptyTarget();
+            _navAgent.enabled = false;
+            Initialized = false;
         }
     }
 }

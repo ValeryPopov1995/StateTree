@@ -14,8 +14,9 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             if (npc.TargetEnemy != null)
                 lookDirection = npc.TargetEnemy.Transform.position - npc.transform.position;
 
+            // points behind cover
             Transform coverPoint = _points
-                .FirstOrDefault(point => Vector3.Dot(lookDirection, point.position - transform.position) > 0);
+                .FirstOrDefault(point => Vector3.Dot(lookDirection, transform.position - point.position) > 0);
 
             if (coverPoint == null)
                 return null;

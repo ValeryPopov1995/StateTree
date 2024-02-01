@@ -1,5 +1,14 @@
-﻿namespace ValeryPopov.Common.StateTree.NpcSample
+﻿using System.Threading.Tasks;
+
+namespace ValeryPopov.Common.StateTree.NpcSample
 {
-    [CreateNodeMenu("StateTree/Npc Sample/Base/Start")]
-    public class NpcStartState : StartState<Npc> { }
+    [CreateNodeMenu("StateTree/Npc Sample/Start/Start")]
+    public class NpcStartState : StartState<Npc>
+    {
+        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        {
+            await Task.Yield();
+            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_firstState)));
+        }
+    }
 }

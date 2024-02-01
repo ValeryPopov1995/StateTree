@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
@@ -12,10 +11,10 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _empty;
 
-        public override async Task<NodePort> Execute(Npc agent)
+        public override async Task<StateResult<Npc>> Execute(Npc agent)
         {
             await Task.Yield();
-            return GetOutputPort(nameof(_empty));
+            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_empty)));
         }
     }
 }

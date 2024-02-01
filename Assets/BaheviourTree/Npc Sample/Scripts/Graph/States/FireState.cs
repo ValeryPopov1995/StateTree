@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
-using XNode;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
@@ -9,14 +8,14 @@ namespace ValeryPopov.Common.StateTree.NpcSample
     {
         [SerializeField] private Vector2Int _fireCount = new(3, 5);
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
-        private NpcState _afterFire, _noAmmo, _noTarget;
+        private NpcState _afterFire, _noAmmoInWeapon, _noTarget;
 
-        public override async Task<NodePort> Execute(Npc agent)
+        public override async Task<StateResult<Npc>> Execute(Npc agent)
         {
             if (agent.TargetEnemy)
                 agent.Mover.LookAt(new TransfromTarget(agent.TargetEnemy.transform));
             else
-                return GetOutputPort(nameof(_noTarget));
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noTarget)));
 
             var weapon = agent.Inventory.TryGetItem<Weapon>();
             if (weapon)
@@ -27,11 +26,17 @@ namespace ValeryPopov.Common.StateTree.NpcSample
                     if (!weapon.ConnectedMagazine.IsEmpty)
                         await weapon.Fire();
                     else
-                        return GetOutputPort(nameof(_noAmmo));
+                        return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noAmmoInWeapon))); // no ammo diring fire
                 }
+
+                if (weapon.ConnectedMagazine.IsEmpty)
+                    return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noAmmoInWeapon))); // no ammo after fire
             }
 
-            return GetOutputPort(nameof(_afterFire));
+            if (agent.TargetEnemy)
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_afterFire)));
+            else
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noTarget)));
         }
     }
 }

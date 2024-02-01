@@ -11,7 +11,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         protected bool TryReactOnEnemy(Npc agent, int dangerDistance)
         {
             var dangerEnemies = agent.OverlapNpcs(dangerDistance)
-                .Where(a => a.TeamTag != agent.TeamTag);
+                .Where(npc => npc.TeamTag != agent.TeamTag);
             var nearest = dangerEnemies.FirstOrDefault();
 
             if (nearest)
