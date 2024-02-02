@@ -20,7 +20,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         {
             float duration = Random.Range(_wait.x, _wait.y);
 
-            agent.Mover.LookAt(new EmptyTarget());
+            agent.Mover.LookAt(null);
 
             if (TryReactOnEnemy(agent, _dangerDistance))
             {

@@ -1,8 +1,8 @@
 ﻿namespace ValeryPopov.Common.StateTree.NpcSample
 {
-    public class MoveOrder : Order
+    public class CoverOrder : Order
     {
-        public MoveOrder(Target target)
+        public CoverOrder(Target target)
         {
             Target = target;
         }

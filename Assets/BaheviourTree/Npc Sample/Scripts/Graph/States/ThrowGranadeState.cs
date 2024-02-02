@@ -5,14 +5,16 @@ using UnityEngine;
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
     [CreateNodeMenu("StateTree/Npc Sample/Throw granade")]
-    public class ThrowGranadeState : GetItemState
+    public class ThrowGranadeState : GetItemState, IOrderableState<ThrowGranadeOrder>
     {
         [SerializeField, Min(0)] private float _minDistance = 5;
         [SerializeField, Min(0)] private int _throwDuration = 1;
-        [SerializeField] private bool _tryGetTargetFromOrder = true;
+        [field: SerializeField] public bool TryGetTargetFromOrder { get; private set; } = true;
 
         [SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _thown, _noGranade, _notDistanced, _noTarget;
+
+
 
         public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
@@ -25,7 +27,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             await Task.Delay(TimeSpan.FromSeconds(_throwDuration));
 
             Vector3 targetPosition = default;
-            if (_tryGetTargetFromOrder && agent.OrderSystem.LastOrder is ThrowGranadeOrder)
+            if (TryGetTargetFromOrder && agent.OrderSystem.LastOrder is ThrowGranadeOrder)
             {
                 targetPosition = (agent.OrderSystem.LastOrder as ThrowGranadeOrder).Enemy.transform.position;
                 agent.OrderSystem.LastOrder = null;
@@ -51,5 +53,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             Vector3 force = to - from; // to enemy
             return (Vector3.up * force.magnitude + force) / 2 * forceMultiply; // diagonal
         }
+
+        public ThrowGranadeOrder GetOrder(Npc agent) => agent.OrderSystem.LastOrder as ThrowGranadeOrder;
     }
 }

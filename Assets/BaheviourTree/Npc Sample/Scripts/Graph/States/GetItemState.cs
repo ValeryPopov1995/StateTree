@@ -78,7 +78,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             {
                 agent.Mover.MoveTo(new TransfromTarget(item.transform));
                 await UniTask.WaitWhile(() => agent.Mover.IsMove);
-                agent.Mover.MoveTo(new EmptyTarget());
+                agent.Mover.MoveTo(null);
                 agent.Inventory.PickUp(item);
             }
         }

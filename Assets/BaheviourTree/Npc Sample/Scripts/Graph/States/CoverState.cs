@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
     [CreateNodeMenu("StateTree/Npc Sample/Cover")]
-    public class CoverState : NpcState
+    public class CoverState : NpcState, IOrderableState<CoverOrder>
     {
         private enum CoverType
         {
@@ -19,37 +19,49 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             forwardHemisphere, backwardHemisphere, all
         }
 
+        [field: SerializeField] public bool TryGetTargetFromOrder { get; private set; } = true;
         [SerializeField] private int _maxMoveDuration = 5;
         [SerializeField] private int _busyCoverDistance = 2;
         [SerializeField] private CoverType _coverType = CoverType.last;
         [SerializeField] private FindCoverZoneType _findCoverZoneType = FindCoverZoneType.backwardHemisphere;
 
-        [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
-        private NpcState _covered, _noCover;
+        [SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
+        private NpcState _covered, _failed;
+
 
         public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             float time = Time.time;
-            var covers = FindCovers(agent)
-                .Where(cvr => !IsBusyPoint(cvr.transform.position));
-            covers = GetCoversByZone(agent, covers);
-            Cover cover = GetCoverByCoverType(covers);
+            Target target = null;
 
-
-
-            if (cover)
+            var order = GetOrder(agent);
+            if (TryGetTargetFromOrder && order != null)
             {
-                agent.Mover.MoveTo(cover.GetCoverTarget(agent));
+                target = order.Target;
+            }
+            else
+            {
+                var covers = FindCovers(agent)
+                .Where(cvr => !IsBusyPoint(cvr.transform.position));
+                covers = GetCoversByZone(agent, covers);
+                var cover = GetCoverByCoverType(covers);
+                if (cover)
+                    target = cover.GetCoverTarget(agent);
+            }
+
+            if (!Target.IsNullOrEmpty(target))
+            {
+                agent.Mover.MoveTo(target);
                 bool maxDuration() => time > Time.time + _maxMoveDuration;
                 await UniTask.WaitWhile(() => agent.Mover.IsMove || maxDuration());
 
                 if (maxDuration())
-                    return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noCover)));
+                    return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_failed)));
 
                 return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_covered)));
             }
 
-            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noCover)));
+            return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_failed)));
         }
 
         private IEnumerable<Cover> GetCoversByZone(Npc agent, IEnumerable<Cover> covers)
@@ -102,5 +114,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
                 .Where(npc => npc && npc.Health.IsAlive)
                 .Any();
         }
+
+        public CoverOrder GetOrder(Npc agent) => agent.OrderSystem.LastOrder as CoverOrder;
     }
 }

@@ -69,6 +69,8 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             item.transform.SetParent(null);
             item.AttachedInventory = null;
             item.Rigidbody.isKinematic = false;
+
+            item.Rigidbody.AddTorque(UnityEngine.Random.onUnitSphere * 20); // falling
         }
 
         internal TItem TryGetItem<TItem>() where TItem : Item

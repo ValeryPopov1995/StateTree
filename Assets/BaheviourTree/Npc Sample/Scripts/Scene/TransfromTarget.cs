@@ -6,7 +6,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
     {
         public override Vector3 Position => _target.position;
 
-        public override bool IsEmpty => !_target;
+        protected override bool IsEmpty => !_target;
 
         private Transform _target;
 

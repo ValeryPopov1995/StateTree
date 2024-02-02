@@ -6,7 +6,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
     [CreateNodeMenu("StateTree/Npc Sample/Base/Random")]
     public class RandomState : NpcState
     {
-        [SerializeField, Range(0, 100)] private int _statesChance = 50;
+        [SerializeField, Range(0, 100)] private int _statesChance = 100;
 
         [SerializeField, Output(typeConstraint = TypeConstraint.Strict)]
         private NpcState _states, _exit;

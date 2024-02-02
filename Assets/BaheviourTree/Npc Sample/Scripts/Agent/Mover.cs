@@ -12,8 +12,8 @@ namespace ValeryPopov.Common.StateTree.NpcSample
     {
         public bool IsStopped => Vector3.Distance(_navAgent.transform.position, _navAgent.destination) <= _navAgent.stoppingDistance;
         public bool IsMove => !IsStopped;
-        public Target LookTarget { get; private set; } = new EmptyTarget();
-        public Target MoveTarget { get; private set; } = new EmptyTarget();
+        public Target LookTarget { get; private set; }
+        public Target MoveTarget { get; private set; }
         public bool Initialized { get; private set; }
 
         [SerializeField] private NavMeshAgent _navAgent;
@@ -55,7 +55,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         {
             while (!_npcToken.IsCancellationRequested && !_disposeToken.IsCancellationRequested)
             {
-                if (!LookTarget.IsEmpty)
+                if (!Target.IsNullOrEmpty(LookTarget))
                 {
                     if (_navAgent.updateRotation)
                         _navAgent.updateRotation = false;
@@ -77,7 +77,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         {
             while (!_npcToken.IsCancellationRequested && !_disposeToken.IsCancellationRequested)
             {
-                if (!MoveTarget.IsEmpty && _navAgent.destination != MoveTarget)
+                if (!Target.IsNullOrEmpty(MoveTarget) && _navAgent.destination != MoveTarget)
                     _navAgent.destination = MoveTarget;
 
                 await Task.Delay(100);
@@ -87,7 +87,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         public void Dispose()
         {
             _disposeToken.Cancel();
-            LookTarget = MoveTarget = new EmptyTarget();
+            LookTarget = MoveTarget = null;
             _navAgent.enabled = false;
             Initialized = false;
         }

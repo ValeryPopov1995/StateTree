@@ -13,7 +13,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
-            if (agent.TargetWarning.IsEmpty)
+            if (Target.IsNullOrEmpty(agent.TargetWarning))
                 return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noWarning)));
 
             agent.Mover.MoveTo(agent.TargetWarning);

@@ -49,6 +49,10 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             return result;
         }
 
+        /// <summary>
+        /// Decorator, <see cref="Npc"/> check <see cref="OrderSystem.LastOrder"/> != null after <see cref="State{TAgent}.Execute(TAgent)"/>
+        /// </summary>
+        /// <returns>result of state executing</returns>
         public abstract Task<IStateResult<Npc>> ExecuteNpcState(Npc agent);
     }
 }

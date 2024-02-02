@@ -12,7 +12,7 @@ namespace ValeryPopov.Common.StateTree
         public StartState<TAgent> StartState { get; protected set; }
 
         [SerializeField] protected StateGraph<TAgent> _graph;
-        [SerializeField] private float _minStateDuration = .5f;
+        protected float _minStateDuration = .1f;
         private float _lastStateExecuteTime;
         protected State<TAgent> _currentState;
 #if UNITY_EDITOR

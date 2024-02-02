@@ -16,6 +16,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField] public OrderSystem OrderSystem { get; private set; }
         [field: SerializeField] public Mover Mover { get; private set; }
         [field: SerializeField] public Transform GranadeThrowPoint { get; private set; }
+        [SerializeField] private Vector2 _minStateDurationRandom = new(.1f, .2f);
 
         public Npc TargetEnemy
         {
@@ -35,7 +36,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             }
         }
         private Npc _targetEnemy;
-        public Target TargetWarning { get; set; } = new EmptyTarget();
+        public Target TargetWarning { get; set; }
         public Vector3 StartPosition { get; set; }
 
 
@@ -46,6 +47,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             Rigidbody.isKinematic = true;
             Communication.Init(this);
             Mover.Init(destroyCancellationToken);
+            _minStateDuration = Random.Range(_minStateDurationRandom.x, _minStateDurationRandom.y);
 
             StartPosition = transform.position;
 
@@ -66,7 +68,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             Mover.Dispose();
             OrderSystem.Dispose();
 
-            Rigidbody.AddTorque(UnityEngine.Random.onUnitSphere * 20); // falling
+            Rigidbody.AddTorque(Random.onUnitSphere * 20); // falling
         }
 
         protected override async Task<IStateResult<Npc>> ExecuteState(State<Npc> state)
