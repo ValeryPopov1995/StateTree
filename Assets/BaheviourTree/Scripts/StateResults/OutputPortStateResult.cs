@@ -2,7 +2,7 @@
 
 namespace ValeryPopov.Common.StateTree
 {
-    public class OutputPortStateResult<TAgent> : StateResult<TAgent> where TAgent : Agent
+    public class OutputPortStateResult<TAgent> : IStateResult<TAgent> where TAgent : Agent
     {
         private NodePort _outputPort;
 
@@ -11,7 +11,7 @@ namespace ValeryPopov.Common.StateTree
             _outputPort = outputPort;
         }
 
-        public override State<TAgent> Complete(Agent<TAgent> agent)
+        public State<TAgent> Complete(Agent<TAgent> agent)
         {
             if (_outputPort.Connection == null)
                 return agent.StartState;

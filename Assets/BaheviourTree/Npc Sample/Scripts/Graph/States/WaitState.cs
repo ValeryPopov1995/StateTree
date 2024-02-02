@@ -11,7 +11,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _next;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             float duration = UnityEngine.Random.Range(_wait.x, _wait.y);
             await Task.Delay(TimeSpan.FromSeconds(duration), agent.destroyCancellationToken);

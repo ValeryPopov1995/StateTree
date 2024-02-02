@@ -13,6 +13,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField] public Inventory Inventory { get; private set; }
         [field: SerializeField] public TeamTag TeamTag { get; private set; }
         [field: SerializeField] public Communication Communication { get; private set; }
+        [field: SerializeField] public OrderSystem OrderSystem { get; private set; }
         [field: SerializeField] public Mover Mover { get; private set; }
         [field: SerializeField] public Transform GranadeThrowPoint { get; private set; }
 
@@ -58,24 +59,32 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         private void Die()
         {
+            Dispose();
             Inventory.Dispose();
             Rigidbody.isKinematic = false;
             Communication.Dispose();
             Mover.Dispose();
+            OrderSystem.Dispose();
 
-            Rigidbody.AddTorque(Random.onUnitSphere * 10); // falling
+            Rigidbody.AddTorque(UnityEngine.Random.onUnitSphere * 20); // falling
         }
 
-        protected override async Task<StateResult<Npc>> ExecuteState(State<Npc> state)
+        protected override async Task<IStateResult<Npc>> ExecuteState(State<Npc> state)
         {
             return await state.Execute(this);
         }
 
+        /// <summary>
+        /// Get npc near this agent
+        /// </summary>
+        /// <param name="distance">find distance from agent</param>
+        /// <param name="includeDeads">include dead npcs</param>
+        /// <returns>alived nps (optional), exclude this agent</returns>
         public IEnumerable<Npc> OverlapNpcs(int distance, bool includeDeads = false)
         {
             return FindObjectsByType<Npc>(FindObjectsSortMode.None)
                 .Where(npc =>
-                this != npc
+                npc != this
                 && (includeDeads || !includeDeads && npc.Health.IsAlive)
                 && Vector3.Distance(transform.position, npc.transform.position) < distance);
         }

@@ -11,7 +11,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _noWarning, _hasEnemy, _noEnemy;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             if (agent.TargetWarning.IsEmpty)
                 return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noWarning)));

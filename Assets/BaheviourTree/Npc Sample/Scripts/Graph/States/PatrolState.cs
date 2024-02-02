@@ -16,14 +16,17 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _hasEnemy, _hasWarning, _noWarning;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             float duration = Random.Range(_wait.x, _wait.y);
 
             agent.Mover.LookAt(new EmptyTarget());
 
             if (TryReactOnEnemy(agent, _dangerDistance))
+            {
+                WorldLog.Log(agent.TargetEnemy.transform.position, "danger", agent);
                 return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_hasEnemy)));
+            }
 
             var warningEnemies = agent.OverlapNpcs(_warningDistance).Where(a => a.TeamTag != agent.TeamTag);
             if (warningEnemies.Count() > 0)

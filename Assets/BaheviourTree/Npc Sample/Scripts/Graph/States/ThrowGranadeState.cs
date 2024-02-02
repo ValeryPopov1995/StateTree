@@ -5,16 +5,16 @@ using UnityEngine;
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
     [CreateNodeMenu("StateTree/Npc Sample/Throw granade")]
-    public class ThrowGranadeState : UseItemNpcState
+    public class ThrowGranadeState : GetItemState
     {
-        [SerializeField, Min(0)] private float _force = 10;
         [SerializeField, Min(0)] private float _minDistance = 5;
         [SerializeField, Min(0)] private int _throwDuration = 1;
+        [SerializeField] private bool _tryGetTargetFromOrder = true;
 
-        [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
-        private NpcState _thown, _noGranade, _notDistanced;
+        [SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
+        private NpcState _thown, _noGranade, _notDistanced, _noTarget;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             await Task.Yield();
 
@@ -22,16 +22,34 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             if (granade == null)
                 return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noGranade)));
 
-            if (Vector3.Distance(agent.transform.position, agent.TargetEnemy.transform.position) < _minDistance)
-                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_notDistanced)));
-
             await Task.Delay(TimeSpan.FromSeconds(_throwDuration));
 
-            Vector3 force = agent.TargetEnemy.transform.position - agent.transform.position; // to enemy
-            force = (Vector3.up * force.magnitude + force) / 2 * _force; // diagonal
+            Vector3 targetPosition = default;
+            if (_tryGetTargetFromOrder && agent.OrderSystem.LastOrder is ThrowGranadeOrder)
+            {
+                targetPosition = (agent.OrderSystem.LastOrder as ThrowGranadeOrder).Enemy.transform.position;
+                agent.OrderSystem.LastOrder = null;
+            }
+            else if (agent.TargetEnemy)
+            {
+                if (Vector3.Distance(agent.transform.position, agent.TargetEnemy.transform.position) < _minDistance)
+                    return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_notDistanced)));
 
+                targetPosition = agent.TargetEnemy.transform.position;
+            }
+            else
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_noTarget)));
+
+            Vector3 force = CalculateGranadeForce(agent.transform.position, targetPosition);
             granade.Throw(agent.GranadeThrowPoint.position, force);
             return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_thown)));
+        }
+
+        public static Vector3 CalculateGranadeForce(Vector3 from, Vector3 to)
+        {
+            const float forceMultiply = .9f;
+            Vector3 force = to - from; // to enemy
+            return (Vector3.up * force.magnitude + force) / 2 * forceMultiply; // diagonal
         }
     }
 }

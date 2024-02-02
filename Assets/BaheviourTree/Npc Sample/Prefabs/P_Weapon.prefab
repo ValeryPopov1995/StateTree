@@ -640,6 +640,8 @@ MonoBehaviour:
   _inventory:
     _inventoryParent: {fileID: 1320416414646426606}
     Items: []
+    _inventoryPoints:
+    - {fileID: 1320416414646426606}
   _fireDelay: 0.2
   _reloadDuration: 1
 --- !u!1 &3328419385386617220

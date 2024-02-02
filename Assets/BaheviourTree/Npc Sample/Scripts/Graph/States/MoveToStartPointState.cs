@@ -12,7 +12,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _complete, _hasEnemy;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             agent.Mover.MoveTo(new PointTarget(agent.StartPosition));
             if (_lookAtStart)

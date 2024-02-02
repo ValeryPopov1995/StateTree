@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1017
   m_ShowMode: 0
-  m_Title: Game
+  m_Title: xNode
   m_RootView: {fileID: 4}
   m_MinSize: {x: 100, y: 50}
   m_MaxSize: {x: 8096, y: 8096}
@@ -43,7 +43,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Console
   m_RootView: {fileID: 11}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: NodeEditorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -69,13 +69,13 @@ MonoBehaviour:
     height: 1017
   m_MinSize: {x: 100, y: 121}
   m_MaxSize: {x: 4000, y: 4021}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 17}
   - {fileID: 16}
   - {fileID: 15}
-  m_Selected: 1
-  m_LastSelected: 2
+  m_Selected: 2
+  m_LastSelected: 0
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 50}
   m_MaxSize: {x: 8096, y: 8096}
   vertical: 1
-  controlID: 16
+  controlID: 15
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -119,8 +119,8 @@ MonoBehaviour:
     y: 0
     width: 557
     height: 947
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 25}
   m_Panes:
   - {fileID: 25}
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 47
+  controlID: 106
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 50}
   m_MaxSize: {x: 32384, y: 8096}
   vertical: 0
-  controlID: 46
+  controlID: 172
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,8 +225,8 @@ MonoBehaviour:
     y: 0
     width: 565
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -253,8 +253,8 @@ MonoBehaviour:
     y: 0
     width: 347
     height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 24}
   m_Panes:
   - {fileID: 24}
@@ -413,21 +413,21 @@ MonoBehaviour:
   - _node: {fileID: 2277378627391265540, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _firstState
   - _node: {fileID: 669603646698085780, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
+  - _node: {fileID: 499638521321504587, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
   - _node: {fileID: 499638521321504587, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _states
-  - _node: {fileID: 499638521321504587, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+  - _node: {fileID: -6344550027652749149, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
   - _node: {fileID: -6344550027652749149, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _states
-  - _node: {fileID: -6344550027652749149, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
   - _node: {fileID: 2742055169557373106, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _noTarget
   - _node: {fileID: 2742055169557373106, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _hasTarget
   - _node: {fileID: 2742055169557373106, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: 7009728149920391032, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _noEnemy
   - _node: {fileID: 7009728149920391032, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
@@ -437,427 +437,1050 @@ MonoBehaviour:
   - _node: {fileID: 3893116296729930786, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _next
   - _node: {fileID: 3893116296729930786, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
-  - _node: {fileID: -2376690438725374030, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _next
+    _name: _hasOrder
   - _node: {fileID: 3689811619634741761, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _next
   - _node: {fileID: 3689811619634741761, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: 4662304104052030743, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _noTarget
   - _node: {fileID: 4662304104052030743, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _noAmmo
+    _name: _noAmmoInWeapon
   - _node: {fileID: 4662304104052030743, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _afterFire
-  - _node: {fileID: 4662304104052030743, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+  - _node: {fileID: 1111985327125950070, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
   - _node: {fileID: 1111985327125950070, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _states
-  - _node: {fileID: 1111985327125950070, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
   - _node: {fileID: 1893258851784218818, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _noCover
   - _node: {fileID: 1893258851784218818, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _covered
   - _node: {fileID: 1893258851784218818, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: 6484506122386717242, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _noAmmo
   - _node: {fileID: 6484506122386717242, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _reloaded
   - _node: {fileID: 6484506122386717242, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: 2221294361669413471, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _noCover
   - _node: {fileID: 2221294361669413471, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _covered
   - _node: {fileID: 2221294361669413471, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
-  - _node: {fileID: -2376690438725374030, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: 8817863486860588428, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _next
   - _node: {fileID: 8817863486860588428, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: -5118404831465330640, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _sufficient
   - _node: {fileID: -5118404831465330640, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _low
   - _node: {fileID: -5118404831465330640, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
+  - _node: {fileID: 3031781559444416874, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
   - _node: {fileID: 3031781559444416874, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _states
-  - _node: {fileID: 3031781559444416874, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
   - _node: {fileID: -8028816530337767634, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _failed
   - _node: {fileID: -8028816530337767634, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _healed
   - _node: {fileID: -8028816530337767634, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: -492590914923073586, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _next
   - _node: {fileID: -492590914923073586, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
+  - _node: {fileID: 3701213527040264137, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
   - _node: {fileID: 3701213527040264137, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _states
-  - _node: {fileID: 3701213527040264137, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
   - _node: {fileID: 1767636213495904242, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _next
   - _node: {fileID: 1767636213495904242, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: -4972170225809317092, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _hasEnemy
   - _node: {fileID: 1069964833683181748, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _states
+    _name: _exit
   - _node: {fileID: 1069964833683181748, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _states
   - _node: {fileID: -7913395138668884595, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: 6499025542315362147, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _next
   - _node: {fileID: 6499025542315362147, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: -4972170225809317092, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _complete
   - _node: {fileID: -4972170225809317092, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
+    _name: _hasOrder
   - _node: {fileID: 1195501251760881606, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _noCover
   - _node: {fileID: 1195501251760881606, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _covered
   - _node: {fileID: 1195501251760881606, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _input
-  - _node: {fileID: -5979495319485500962, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
-    _name: _firstState
+    _name: _hasOrder
   - _node: {fileID: 7009728149920391032, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 5198955143817986756, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noTarget
+  - _node: {fileID: 5198955143817986756, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _notDistanced
+  - _node: {fileID: 5198955143817986756, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noGranade
+  - _node: {fileID: -1238448995731882414, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
+  - _node: {fileID: -1238448995731882414, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _states
+  - _node: {fileID: -8773918474790743571, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noWarning
+  - _node: {fileID: -8773918474790743571, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasWarning
+  - _node: {fileID: -8773918474790743571, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasEnemy
+  - _node: {fileID: -8773918474790743571, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -8528262821175145648, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noCover
+  - _node: {fileID: -8528262821175145648, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _covered
+  - _node: {fileID: -8528262821175145648, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 5198955143817986756, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _thown
+  - _node: {fileID: -6206657821726459730, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noAmmo
+  - _node: {fileID: -6206657821726459730, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _collected
+  - _node: {fileID: -6206657821726459730, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 4662304104052030743, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 6854437516272389511, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noAmmo
+  - _node: {fileID: 6854437516272389511, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasAmmo
+  - _node: {fileID: 6854437516272389511, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -8009197639264874836, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
+  - _node: {fileID: -8009197639264874836, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _states
+  - _node: {fileID: -7347062918769258651, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _next
+  - _node: {fileID: -7347062918769258651, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 669603646698085780, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -6344550027652749149, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 2742055169557373106, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 7009728149920391032, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 2221294361669413471, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 3701213527040264137, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 1767636213495904242, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 6499025542315362147, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 5198955143817986756, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 6854437516272389511, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -8009197639264874836, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -4972170225809317092, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 499638521321504587, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 3689811619634741761, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -5118404831465330640, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -7347062918769258651, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 1069964833683181748, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 3893116296729930786, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -7913395138668884595, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -6206657821726459730, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -492590914923073586, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 3031781559444416874, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -8028816530337767634, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 4662304104052030743, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 499638521321504587, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 1002782034831637796, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noEnemy
+  - _node: {fileID: 1002782034831637796, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _ordered
+  - _node: {fileID: 1002782034831637796, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _cantOrder
+  - _node: {fileID: 1002782034831637796, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 1002782034831637796, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 5929291448868615635, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _not
+  - _node: {fileID: 5929291448868615635, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _can
+  - _node: {fileID: 5929291448868615635, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 5929291448868615635, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -6974450845681155914, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noOrder
+  - _node: {fileID: -6974450845681155914, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -6974450845681155914, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -5234573149887379237, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _exit
+  - _node: {fileID: -5234573149887379237, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _states
+  - _node: {fileID: -5234573149887379237, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -5234573149887379237, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -3308541487592067687, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _next
+  - _node: {fileID: -3308541487592067687, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -3308541487592067687, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 1069964833683181748, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -6344550027652749149, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 3031781559444416874, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 3701213527040264137, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 5198955143817986756, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -8009197639264874836, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 1092065824105288988, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noTarget
+  - _node: {fileID: 1092065824105288988, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _notDistanced
+  - _node: {fileID: 1092065824105288988, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _noGranade
+  - _node: {fileID: 1092065824105288988, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _thown
+  - _node: {fileID: 1092065824105288988, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 1092065824105288988, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -5740114770226222574, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _next
+  - _node: {fileID: -5740114770226222574, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -5740114770226222574, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 1111985327125950070, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: 1111985327125950070, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 1893258851784218818, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 8817863486860588428, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 1195501251760881606, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -1238448995731882414, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _hasOrder
+  - _node: {fileID: -1238448995731882414, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -8773918474790743571, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: -8528262821175145648, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
+    _name: _input
+  - _node: {fileID: 6484506122386717242, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
     _name: _input
   _rects:
   - serializedVersion: 2
-    x: 632
-    y: 104
+    x: 3000
+    y: 832
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 632
-    y: 84
+    x: 3000
+    y: 812
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 632
-    y: 64
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: -8
-    y: -20
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 440
-    y: -36
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 968
-    y: 192
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 776
-    y: 172
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1816
-    y: -432
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1624
-    y: -452
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 296
-    y: -108
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 296
-    y: -128
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 104
-    y: -148
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1352
-    y: 28
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1352
-    y: 8
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1352
-    y: -12
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1240
-    y: 440
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1048
-    y: 380
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2056
-    y: -332
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1240
-    y: 292
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1048
-    y: 252
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2296
-    y: -320
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2296
-    y: -340
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2296
-    y: -360
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2104
-    y: -420
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2568
-    y: -272
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2376
-    y: -292
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2808
-    y: -272
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2808
-    y: -292
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2616
-    y: -372
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 3048
-    y: -252
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 3048
-    y: -272
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2856
-    y: -292
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2056
-    y: -400
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2056
-    y: -420
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1864
-    y: -500
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 1864
-    y: -372
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2808
-    y: -172
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 2616
-    y: -212
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 296
-    y: 328
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 296
-    y: 308
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 104
-    y: 268
-    width: 16
-    height: 16
-  - serializedVersion: 2
-    x: 568
-    y: 576
+    x: 3000
+    y: 792
     width: 16
     height: 16
   - serializedVersion: 2
     x: 376
-    y: 556
+    y: 124
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1080
-    y: 728
+    x: 3000
+    y: 692
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1080
-    y: 708
+    x: 3336
+    y: 960
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 888
-    y: 588
+    x: 3336
+    y: 940
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 824
-    y: 532
+    x: 3752
+    y: -304
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 632
-    y: 492
+    x: 3752
+    y: -324
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1656
-    y: 32
+    x: 2568
+    y: 268
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1464
-    y: 12
+    x: 2568
+    y: 248
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1944
-    y: 8
+    x: 2568
+    y: 228
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1752
-    y: -52
+    x: 3720
+    y: 756
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1944
-    y: 172
+    x: 3720
+    y: 736
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1480
-    y: 304
+    x: 3720
+    y: 716
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1288
-    y: 284
+    x: 3608
+    y: 1168
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1544
-    y: 380
+    x: 3608
+    y: 1108
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 2056
-    y: -220
+    x: 3608
+    y: 988
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1864
-    y: -260
+    x: 3608
+    y: 948
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1944
-    y: 152
+    x: 5544
+    y: -648
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 1752
-    y: 92
+    x: 5544
+    y: -668
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 2808
-    y: -400
+    x: 5544
+    y: -688
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 2808
-    y: -420
+    x: 5832
+    y: -528
     width: 16
     height: 16
   - serializedVersion: 2
-    x: 2616
-    y: -500
+    x: 5832
+    y: -548
     width: 16
     height: 16
   - serializedVersion: 2
-    x: -8
+    x: 6056
+    y: -628
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6056
+    y: -648
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6056
+    y: -748
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6296
+    y: -532
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6296
+    y: -552
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6296
+    y: -572
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4248
+    y: -836
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4248
+    y: -856
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4248
+    y: -956
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6056
+    y: -452
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6056
+    y: -492
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2152
+    y: 1312
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2152
+    y: 1292
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2152
+    y: 1252
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2440
+    y: 1552
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2440
+    y: 1532
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2920
+    y: 1664
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2920
+    y: 1644
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2920
+    y: 1524
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2664
+    y: 1436
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2664
+    y: 1396
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4024
+    y: 800
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4024
+    y: 780
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4312
+    y: 736
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4312
+    y: 676
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4312
+    y: 932
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3848
+    y: 1072
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3848
     y: 1052
     width: 16
     height: 16
   - serializedVersion: 2
+    x: 4104
+    y: 1108
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4248
+    y: -676
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4248
+    y: -716
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4312
+    y: 912
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4312
+    y: 852
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6056
+    y: -868
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6056
+    y: -888
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6056
+    y: -988
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3720
+    y: 676
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3720
+    y: -608
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3720
+    y: -628
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3720
+    y: -648
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5784
+    y: -288
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5784
+    y: -308
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6088
+    y: -208
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6088
+    y: -228
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6088
+    y: -248
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6088
+    y: -348
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6088
+    y: -20
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6088
+    y: -40
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6088
+    y: -140
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3720
+    y: -668
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5272
+    y: -804
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5272
+    y: -824
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5272
+    y: -924
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5544
+    y: -748
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4600
+    y: -628
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4600
+    y: -648
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4600
+    y: -668
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4824
+    y: -864
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4824
+    y: -884
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5048
+    y: -964
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5048
+    y: -1004
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2808
+    y: 652
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3752
+    y: -364
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2376
+    y: 188
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3528
+    y: 636
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4056
+    y: -996
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4024
+    y: 740
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4120
+    y: 636
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4056
+    y: -756
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3720
+    y: -828
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4408
+    y: -708
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4824
+    y: -924
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4120
+    y: 812
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3336
+    y: 900
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3416
+    y: 908
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1960
+    y: 1212
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4856
+    y: -1044
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3848
+    y: 1012
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3416
+    y: 1068
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3912
+    y: 1068
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5080
+    y: -964
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2472
+    y: 1356
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2440
+    y: 1492
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2728
+    y: 1484
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5352
+    y: -788
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3144
+    y: 860
+    width: 16
+    height: 16
+  - serializedVersion: 2
     x: 1160
-    y: -52
+    y: 116
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1160
+    y: 96
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1160
+    y: 76
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1160
+    y: 36
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 968
+    y: -4
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 600
+    y: 220
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 600
+    y: 200
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 600
+    y: 180
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 408
+    y: 140
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1672
+    y: 328
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1672
+    y: 308
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1480
+    y: 268
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 872
+    y: 160
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 872
+    y: 140
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 872
+    y: 100
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 680
+    y: 60
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1416
+    y: 168
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1416
+    y: 148
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1224
+    y: 108
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3656
+    y: 972
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3560
+    y: -404
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2248
+    y: 1452
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3832
+    y: 700
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 3528
+    y: -868
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 4632
+    y: -964
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2232
+    y: -1456
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2232
+    y: -1476
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2232
+    y: -1496
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2232
+    y: -1516
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2232
+    y: -1676
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 2040
+    y: -1716
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1800
+    y: -1480
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1800
+    y: -1500
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 1608
+    y: -1540
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5832
+    y: -588
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5640
+    y: -628
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5864
+    y: -788
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5864
+    y: -532
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5864
+    y: -1028
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5784
+    y: -348
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5592
+    y: -388
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5896
+    y: -388
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 5896
+    y: -180
+    width: 16
+    height: 16
+  - serializedVersion: 2
+    x: 6104
+    y: -612
     width: 16
     height: 16
   graph: {fileID: 11400000, guid: 903e255c74c8a1c4bbfa156cdf8ab7e6, type: 2}
@@ -930,7 +1553,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1221,8 +1844,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 24, y: 0}
+      snapOffset: {x: 24, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
       index: 6
@@ -1359,9 +1982,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.7864532, y: 10.398443, z: -2.0355632}
+    m_Target: {x: -12.074054, y: 7.415574, z: -1.8649793}
     speed: 2
-    m_Value: {x: -1.7864532, y: 10.398443, z: -2.0355632}
+    m_Value: {x: -12.074054, y: 7.415574, z: -1.8649793}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1407,13 +2030,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.35666832, y: -0.5007687, z: 0.23748183, w: -0.7521299}
+    m_Target: {x: -0.24104303, y: -0.66089433, z: 0.23770726, w: -0.66998726}
     speed: 2
-    m_Value: {x: -0.3566543, y: -0.50074905, z: 0.23747249, w: -0.75210035}
+    m_Value: {x: -0.24101043, y: -0.6608049, z: 0.2376751, w: -0.6698966}
   m_Size:
-    m_Target: 5.8292365
+    m_Target: 2.6190426
     speed: 2
-    m_Value: 5.8292365
+    m_Value: 2.6190426
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1775,7 +2398,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/BaheviourTree/Npc Sample/Prefabs
+    - Assets/BaheviourTree/Npc Sample/Settings
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1793,7 +2416,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b48f0000
     m_LastClickedID: 36788
-    m_ExpandedIDs: 000000006a5400006c5400006e54000070540000725400007454000076540000785400007a5400007c5400007e54000080540000825400008454000086540000885400008a5400008c540000
+    m_ExpandedIDs: 00000000c2590000c4590000c6590000c8590000ca590000cc590000ce590000d0590000d2590000d4590000d6590000d8590000da590000dc590000de590000e0590000e2590000e4590000e6590000e8590000ea590000ec590000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1818,24 +2441,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 32}
+    scrollPos: {x: 0, y: 464}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000025100006a5400006c5400006e54000070540000725400007454000076540000785400007a5400007c5400007e5400008054000082540000845400008654000088540000c2540000c6540000c8540000ca540000cc540000de540000065500008255000086550000
+    m_ExpandedIDs: ffffffff000000002c510000c2590000c4590000c6590000c8590000ca590000cc590000ce590000d0590000d2590000d4590000d6590000d8590000da590000dc590000de590000e0590000e2590000e4590000e6590000e8590000225a00002c5a0000305a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: P_Npc_Equiped Variant - team 0
-      m_OriginalName: P_Npc_Equiped Variant - team 0
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 45798
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
@@ -1965,23 +2588,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ce520000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 10fbffff86510000ee51000000520000
+      m_ExpandedIDs: 10fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: P_Bullet(Clone)
-        m_OriginalName: P_Bullet(Clone)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -40710
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 10}
       m_SearchString: 

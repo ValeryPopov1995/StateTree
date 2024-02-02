@@ -18,7 +18,9 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             transform.position = npc.transform.position + Vector3.up * 3;
             transform.LookAt(Camera.main.transform);
             transform.Rotate(new(0, 180));
-            _icon.sprite = data.Icon;
+
+            if (data.Icon)
+                _icon.sprite = data.Icon;
             _text.text = data.Text;
 
             await Task.Delay(TimeSpan.FromSeconds(_delay));

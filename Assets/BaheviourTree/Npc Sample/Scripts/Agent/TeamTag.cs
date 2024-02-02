@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using UnityEngine;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
@@ -29,7 +31,9 @@ namespace ValeryPopov.Common.StateTree.NpcSample
 
         internal Npc GetNearestTeammate(Npc npc)
         {
-            throw new NotImplementedException();
+            return GameObject.FindObjectsByType<Npc>(FindObjectsSortMode.None)
+                .Where(npc => npc.TeamTag == this)
+                .FirstOrDefault();
         }
     }
 }

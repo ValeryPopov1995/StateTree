@@ -182,5 +182,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 3
   _timer: 2
-  _distance: 5
+  _distance: 4
   _spawnOnExplosion: {fileID: 5901752925240414551, guid: dc85185f99a5e7440a8d19847d0289d4, type: 3}

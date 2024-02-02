@@ -9,6 +9,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
     [Serializable]
     public class Inventory : IInitializable, IDisposable
     {
+        [SerializeField] private Transform[] _inventoryPoints;
         [SerializeField] private Transform _inventoryParent; // TODO use it only for Init()
         public List<Item> Items = new();
 
@@ -19,7 +20,12 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         public async void Init()
         {
             await Task.Yield();
-            Items.ForEach(item => PickUpInternal(item));
+            var items = Items.ToArray();
+            Items.Clear();
+
+            foreach (var item in items)
+                PickUp(item);
+
             Initialized = true;
         }
 
@@ -27,19 +33,29 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         {
             if (Items.Contains(item)) return;
             if (!item.IsPickable) return;
-            Items.Add(item);
+
             PickUpInternal(item);
         }
 
         private void PickUpInternal(Item item)
         {
+            if (Items.Count >= _inventoryPoints.Length)
+            {
+                Debug.Log("no space to pick up " + item.name);
+                return;
+            }
+
             if (item.IsInInventory)
                 item.AttachedInventory.Drop(item);
 
+            Items.Add(item);
             item.PickUpByInventory(this);
             item.transform.SetParent(_inventoryParent);
             item.AttachedInventory = this;
             item.Rigidbody.isKinematic = true;
+
+            item.transform.position = _inventoryPoints[Items.Count - 1].position;
+            item.transform.rotation = _inventoryPoints[Items.Count - 1].rotation;
         }
 
         /// <summary>

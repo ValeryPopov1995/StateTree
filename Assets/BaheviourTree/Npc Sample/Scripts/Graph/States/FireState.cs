@@ -10,7 +10,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _afterFire, _noAmmoInWeapon, _noTarget;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             if (agent.TargetEnemy)
                 agent.Mover.LookAt(new TransfromTarget(agent.TargetEnemy.transform));

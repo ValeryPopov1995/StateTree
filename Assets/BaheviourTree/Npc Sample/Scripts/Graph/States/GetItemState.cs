@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
-    public abstract class UseItemNpcState : NpcState
+    public abstract class GetItemState : NpcState
     {
         [Item, SerializeField] private string _item;
         [SerializeField] private bool _fromInventory = true, _fromTeammate = false, _fromFloor = false;
@@ -14,11 +14,12 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         protected async Task<Item> GetFromAnywhere(Npc agent, bool fromInventory = true, bool fromTeammate = true, bool fromFloor = true)
         {
             Item item = null;
-            if (fromInventory)
+
+            if (fromInventory && _fromInventory)
                 item = await GetFromInventory(agent);
-            else if (!item && fromTeammate)
+            if (!item && fromTeammate && _fromTeammate)
                 item = await GetFromTeammate(agent);
-            else if (!item && fromFloor)
+            if (!item && fromFloor && _fromFloor)
                 item = await GetFromFloor(agent);
 
             return item;
@@ -27,7 +28,6 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         protected async Task<Item> GetFromInventory(Npc agent)
         {
             await Task.Yield();
-            if (!_fromInventory) return null;
 
             var item = agent.Inventory.TryGetItem(_item);
             if (item)
@@ -38,7 +38,6 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         protected async Task<Item> GetFromTeammate(Npc agent)
         {
             await Task.Yield();
-            if (!_fromTeammate) return null;
 
             var teammate = agent.TeamTag.GetNearestTeammate(agent);
             var item = teammate.Inventory.TryGetItem(_item);
@@ -55,7 +54,6 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         protected async Task<Item> GetFromFloor(Npc agent)
         {
             await Task.Yield();
-            if (!_fromFloor) return null;
 
             var items = FindObjectsByType<Item>(FindObjectsSortMode.None)
                 .Where(item => item.IsPickable

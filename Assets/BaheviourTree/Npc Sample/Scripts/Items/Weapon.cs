@@ -44,6 +44,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         {
             newMagazine.CurrentCapacity = Mathf.Min(ConnectedMagazine.CurrentCapacity + newMagazine.CurrentCapacity, newMagazine.Capacity);
 
+            ConnectedMagazine.IsPickable = false;
             ConnectedMagazine.DropFromInventory();
 
             SetMagazine(newMagazine);
@@ -55,8 +56,6 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         {
             ConnectedMagazine = magazine;
             ConnectedMagazine.PickUpByInventory(_inventory);
-            magazine.transform.position = _connectedMagazinePoint.position;
-            magazine.transform.rotation = _connectedMagazinePoint.rotation;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [field: SerializeField, Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _reloaded, _noAmmo;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             var weapon = agent.Inventory.TryGetItem<Weapon>();
             var newMagazine = agent.Inventory.Items

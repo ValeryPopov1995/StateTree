@@ -17,7 +17,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             transform.position = point;
             DropFromInventory();
             IsPickable = false;
-            Rigidbody.AddForce(force, UnityEngine.ForceMode.Impulse);
+            Rigidbody.AddForce(force, ForceMode.Impulse);
 
             await Task.Delay(TimeSpan.FromSeconds(_timer));
             if (!Application.isPlaying) return;

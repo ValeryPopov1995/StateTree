@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -6,17 +7,18 @@ namespace ValeryPopov.Common.StateTree
 {
     public abstract class Agent : MonoBehaviour { }
 
-    public abstract class Agent<TAgent> : Agent where TAgent : Agent
+    public abstract class Agent<TAgent> : Agent, IDisposable where TAgent : Agent
     {
-        public Interruption<TAgent> UnhandledInterrupt { get; internal set; }
-        public StartState<TAgent> StartState { get; private set; }
-        public StartInterruptState<TAgent> InterruptionState { get; private set; }
+        public StartState<TAgent> StartState { get; protected set; }
 
-        [SerializeField] private StateGraph<TAgent> _graph;
-        private State<TAgent> _currentState;
+        [SerializeField] protected StateGraph<TAgent> _graph;
+        [SerializeField] private float _minStateDuration = .5f;
+        private float _lastStateExecuteTime;
+        protected State<TAgent> _currentState;
 #if UNITY_EDITOR
-        private int _currentStateIndex; // for debug
+        [SerializeField] private string _logStateIndex = "";
 #endif
+        private bool _circleInWork;
 
 
 
@@ -27,17 +29,24 @@ namespace ValeryPopov.Common.StateTree
 
         private async void ExecuteCircle()
         {
+            _circleInWork = true;
+            _lastStateExecuteTime = -_minStateDuration;
             StartState = _graph.nodes.FirstOrDefault(node => node is StartState<TAgent>) as StartState<TAgent>;
             if (StartState == null)
                 throw new System.NullReferenceException("no start state");
 
-            InterruptionState = _graph.nodes.FirstOrDefault(node => node is StartInterruptState<TAgent>) as StartInterruptState<TAgent>;
-            if (InterruptionState == null)
-                throw new System.NullReferenceException("no interruption state");
-
             _currentState = StartState;
-            while (!destroyCancellationToken.IsCancellationRequested)
+            while (!destroyCancellationToken.IsCancellationRequested && _circleInWork)
             {
+#if UNITY_EDITOR
+                _logStateIndex += _graph.nodes.IndexOf(_currentState) + " ";
+#endif
+                if (Time.time < _lastStateExecuteTime + _minStateDuration)
+                {
+                    //Debug.LogWarning("min state duration linit during " + _currentState.name);
+                    await Task.Delay(TimeSpan.FromSeconds(_minStateDuration));
+                }
+                _lastStateExecuteTime = Time.time;
                 var result = await ExecuteState(_currentState);
                 _currentState = result.Complete(this);
             }
@@ -47,6 +56,11 @@ namespace ValeryPopov.Common.StateTree
         /// Override to this <code>return await state.Execute(this);</code>
         /// </summary>
         /// <returns>Output port</returns>
-        protected abstract Task<StateResult<TAgent>> ExecuteState(State<TAgent> state);
+        protected abstract Task<IStateResult<TAgent>> ExecuteState(State<TAgent> state);
+
+        public void Dispose()
+        {
+            _circleInWork = false;
+        }
     }
 }

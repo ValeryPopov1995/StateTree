@@ -5,6 +5,6 @@ namespace ValeryPopov.Common.StateTree
 {
     public abstract class State<TAgent> : Node where TAgent : Agent
     {
-        public abstract Task<StateResult<TAgent>> Execute(TAgent agent);
+        public abstract Task<IStateResult<TAgent>> Execute(TAgent agent);
     }
 }

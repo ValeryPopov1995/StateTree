@@ -11,7 +11,7 @@ namespace ValeryPopov.Common.StateTree.NpcSample
         [Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)]
         private NpcState _empty;
 
-        public override async Task<StateResult<Npc>> Execute(Npc agent)
+        public override async Task<IStateResult<Npc>> ExecuteNpcState(Npc agent)
         {
             await Task.Yield();
             return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_empty)));

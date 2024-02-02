@@ -31,3 +31,9 @@ MonoBehaviour:
   - CommandType: 5
     Icon: {fileID: 0}
     Text: cover me
+  - CommandType: 6
+    Icon: {fileID: 0}
+    Text: i am healthy
+  - CommandType: 7
+    Icon: {fileID: 0}
+    Text: throw granade!

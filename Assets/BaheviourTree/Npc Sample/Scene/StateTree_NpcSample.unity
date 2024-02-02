@@ -280,6 +280,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Npc_Equiped Variant - team 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5766203405841961402, guid: 989eda053cb333a4bb4036706ea082ff, type: 3}
+      propertyPath: <OrderSystem>k__BackingField.<CanOrder>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766203405841961402, guid: 989eda053cb333a4bb4036706ea082ff, type: 3}
+      propertyPath: <OrderSystem>k__BackingField.<CanPerform>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2648,6 +2656,14 @@ PrefabInstance:
     - target: {fileID: 5766203405841961400, guid: 7f63f76f407929d4e929b76bdaccb461, type: 3}
       propertyPath: m_Name
       value: P_Npc_Equiped Variant - team 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766203405841961402, guid: 7f63f76f407929d4e929b76bdaccb461, type: 3}
+      propertyPath: <OrderSystem>k__BackingField.<CanOrder>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766203405841961402, guid: 7f63f76f407929d4e929b76bdaccb461, type: 3}
+      propertyPath: <OrderSystem>k__BackingField.<CanPerform>k__BackingField
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

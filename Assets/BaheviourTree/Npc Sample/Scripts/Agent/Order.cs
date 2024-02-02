@@ -1,6 +1,6 @@
 ﻿namespace ValeryPopov.Common.StateTree.NpcSample
 {
-    public class NpcInterruption : Interruption<Npc>
+    public abstract class Order
     {
 
     }

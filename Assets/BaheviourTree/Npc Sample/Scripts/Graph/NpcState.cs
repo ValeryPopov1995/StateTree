@@ -1,12 +1,17 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ValeryPopov.Common.StateTree.NpcSample
 {
     public abstract class NpcState : State<Npc>
     {
-        [field: SerializeField, Input]
+        [SerializeField, Input]
         private NpcState _input;
+
+        [SerializeField] private bool _checkOrderAfterExecute = true;
+        [SerializeField, Output]
+        private NpcState _hasOrder;
 
         protected bool TryReactOnEnemy(Npc agent, int dangerDistance)
         {
@@ -17,11 +22,33 @@ namespace ValeryPopov.Common.StateTree.NpcSample
             if (nearest)
             {
                 agent.TargetEnemy = nearest;
-                WorldLog.Log(nearest.transform.position, "danger", agent);
                 return true;
             }
 
             return false;
         }
+
+        /// <summary>
+        /// If state is so long, use inside <see cref="State{TAgent}.Execute(TAgent)"/><code>
+        /// if (agent.LastOrder != null)
+        ///     return ReturnHaveOrderResult();
+        /// </code>
+        /// </summary>
+        protected OutputPortStateResult<Npc> ReturnHaveOrderResult()
+        {
+            return new(GetOutputPort(nameof(_hasOrder)));
+        }
+
+        public override async Task<IStateResult<Npc>> Execute(Npc agent)
+        {
+            var result = await ExecuteNpcState(agent);
+
+            if (_checkOrderAfterExecute && agent.OrderSystem.LastOrder != null)
+                return new OutputPortStateResult<Npc>(GetOutputPort(nameof(_hasOrder)));
+
+            return result;
+        }
+
+        public abstract Task<IStateResult<Npc>> ExecuteNpcState(Npc agent);
     }
 }
