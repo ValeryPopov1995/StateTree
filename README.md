@@ -1,3 +1,5 @@
+🚀 In progress
+
 # StateTree
 A behavior tree where nodes are the state of the state machine. It is implemented on an abstract level and has a specific implementation example.
 
